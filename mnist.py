@@ -2,6 +2,7 @@ import numpy as np
 from urllib import request
 import gzip
 import pickle
+from os.path import isfile
 
 filename = [
 ["training_images","train-images-idx3-ubyte.gz"],
@@ -32,6 +33,12 @@ def save_mnist():
 def init():
     download_mnist()
     save_mnist()
+
+def is_downloaded():
+    return any(map(lambda name: not isfile(name[1]), filename))
+
+def is_available():
+    return isfile("mnist.pkl")
 
 def load_data():
     mnist = load()
