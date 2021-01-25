@@ -33,6 +33,10 @@ def init():
     download_mnist()
     save_mnist()
 
+def load_data():
+    mnist = load()
+    return (mnist[0], mnist[1]), (mnist[2], mnist[3])
+
 def load():
     with open("mnist.pkl",'rb') as f:
         mnist = pickle.load(f)
